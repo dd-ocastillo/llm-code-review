@@ -1,12 +1,12 @@
-name: 'LLM Code Review'
-description: 'A container GitHub Action to review a pull request by HuggingFace LLM Model.'
-author: 'Louis Le (luiyen)'
+name: 'Groq Code Review'
+description: 'A container GitHub Action to review a pull request by Groq Inference API.'
+author: 'Raj Singh Parihar (rajsinghparihar)'
 inputs:
   githubToken:
     description: 'Github token to access the repo'
     required: true
   apiKey:
-    description: 'Huggingface access token from [https://huggingface.co/settings/tokens](https://huggingface.co/settings/tokens)'
+    description: 'Groq API Key [https://console.groq.com/keys](https://console.groq.com/keys)'
     required: true
   githubRepository:
     description: "The GitHub repository to use for the action"
@@ -21,9 +21,9 @@ inputs:
     required: true
     default: "${{ github.event.pull_request.head.sha }}"
   repoId:
-    description: "LLM model"
+    description: "LLM name"
     required: true
-    default: "meta-llama/Llama-2-7b-chat-hf"
+    default: "llama3-70b-8192"
   maxNewTokens:
     description: "The amount of new tokens to be generated, this does not include the input length it is a estimate of the size of generated text you want. Each new tokens slows down the request, so look for balance between response times and length of text generated."
     required: false
