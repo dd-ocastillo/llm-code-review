@@ -5,18 +5,18 @@ If the size of a pull request is over the maximum chunk size of the HuggingFace 
 And then the Action summarizes the review comments and posts a review comment to the pull request.
 
 ## Pre-requisites
-We have to set a GitHub Actions secret `HUGGING_FACE_API_KEY` to use the HuggingFace API so that we securely pass it to the Action.
+We have to set a GitHub Actions secret `API_KEY` to use the Groq API so that we securely pass it to the Action.
 
 ## Inputs
 
-- `apiKey`: The HuggingFace API key to access the API.
+- `apiKey`: The Groq API key to access the API.
 - `githubToken`: The GitHub token to access the GitHub API.
 - `githubRepository`: The GitHub repository to post a review comment.
 - `githubPullRequestNumber`: The GitHub pull request number to post a review comment.
 - `gitCommitHash`: The git commit hash to post a review comment.
 - `pullRequestDiff`: The diff of the pull request to generate a review comment.
 - `pullRequestDiffChunkSize`: The chunk size of the diff of the pull request to generate a review comment.
-- `repoId`: LLM repository id on HuggingFace.
+- `repoId`: LLM model name available on GroqCloud.
 - `temperature`: The temperature to generate a review comment.
 - `topP`: The top_p to generate a review comment.
 - `topK`: The top_k to generate a review comment.
@@ -69,7 +69,7 @@ jobs:
           githubRepository: ${{ github.repository }}
           githubPullRequestNumber: ${{ github.event.pull_request.number }}
           gitCommitHash: ${{ github.event.pull_request.head.sha }}
-          repoId: "meta-llama/Llama-2-7b-chat-hf"
+          repoId: "llama3-70b-8192"
           temperature: "0.2"
           maxNewTokens: "250"
           topK: "50"

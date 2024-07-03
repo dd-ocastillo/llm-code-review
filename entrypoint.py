@@ -75,11 +75,6 @@ def get_review(
     chunked_reviews = []
     llm = Groq(
         model=repo_id,
-        model_kwargs={
-            "temperature": temperature,
-            "max_new_tokens": max_new_tokens,
-            "top_p": top_p,
-        },
         api_key=os.getenv("API_KEY"),
     )
     for chunked_diff in chunked_diff_list:
