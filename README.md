@@ -60,8 +60,9 @@ jobs:
           git diff "origin/${{ env.PULL_REQUEST_HEAD_REF }}" > "diff.txt"
           # shellcheck disable=SC2086
           echo "diff=$(cat "diff.txt")" >> $GITHUB_ENV
-      - uses: luiyen/llm-code-review@v0.0.1
-        name: "Code Review"
+
+      - name: LLM Code Review
+        uses: rajsinghparihar/llm-code-review@0.0.1
         id: review
         with:
           apiKey: ${{ secrets.API_KEY }}
@@ -71,11 +72,11 @@ jobs:
           gitCommitHash: ${{ github.event.pull_request.head.sha }}
           repoId: "llama3-70b-8192"
           temperature: "0.2"
-          maxNewTokens: "250"
-          topK: "50"
+          maxNewTokens: "256"
+          topK: "40"
           topP: "0.95"
           pullRequestDiff: |-
             ${{ steps.get_diff.outputs.pull_request_diff }}
-          pullRequestChunkSize: "3500"
+          pullRequestChunkSize: "4000"
           logLevel: "DEBUG"
 ```
