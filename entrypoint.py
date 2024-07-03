@@ -178,6 +178,8 @@ def main(
         top_k=top_k,
         prompt_chunk_size=diff_chunk_size,
     )
+
+    logger.debug(f"Diff Output: {diff}")
     logger.debug(f"Summarized review: {summarized_review}")
     logger.debug(f"Chunked reviews: {chunked_reviews}")
 
